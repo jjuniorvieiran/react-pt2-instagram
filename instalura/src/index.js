@@ -5,15 +5,34 @@ import './css/timeline.css';
 import './css/login.css';
 import App from './App';
 import Login from './componentes/Login';
-import {Route, BrowserRouter} from 'react-router-dom';
+import Logout from './componentes/Logout';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+
+function isNotLoggedIn() {
+    if (localStorage.getItem('auth-token') == null) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
 
 
 ReactDOM.render(
     (
         <BrowserRouter>
-            <Route path="/" component={Login}/>
-            <Route path="/timeline" component={App} />
+            <Route path="/" component={Login} />
+            <Route path="/logout" component={Logout}/>
+
+            {/* <Route path="/timeline" component={App} onEnter={verificaAutenticacao}/> */}
+            <Route exact path="/timeline" render={() => (
+                isNotLoggedIn() ? (
+                    <Redirect to="/?msg=vc precisa estar logado" />
+                ) : (
+                        <App />
+                    )
+            )} />
         </BrowserRouter>
     ),
     document.getElementById('root')

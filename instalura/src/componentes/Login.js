@@ -3,9 +3,10 @@ import {withRouter} from "react-router-dom";
 
 class Login extends Component {
 
-    constructor() {
-        super()
-        this.state = { msg: '' }
+    constructor(props) {
+        super(props)
+        console.log(props);
+        this.state = {msg: this.props.location.search};
     }
 
     envia(event) {
