@@ -24,6 +24,8 @@ ReactDOM.render(
         <BrowserRouter>
             <Route path="/" component={Login} />
             <Route path="/logout" component={Logout}/>
+        
+            <Route path="/timeline(/:login)" component={App}/>    
 
             {/* <Route path="/timeline" component={App} onEnter={verificaAutenticacao}/> */}
             <Route exact path="/timeline" render={() => (
