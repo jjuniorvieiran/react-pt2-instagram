@@ -6,7 +6,7 @@ class Login extends Component {
     constructor(props) {
         super(props)
         console.log(props);
-        this.state = {msg: this.props.location.search};
+        this.state = {msg: this.props.location.search}; //?msg=vc%20precisa%20estar%20logado
     }
 
     envia(event) {
