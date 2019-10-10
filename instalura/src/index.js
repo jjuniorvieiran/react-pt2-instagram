@@ -6,7 +6,7 @@ import './css/login.css';
 import App from './App';
 import Login from './componentes/Login';
 import Logout from './componentes/Logout';
-import { Route, BrowserRouter, Redirect, matchPath } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 function isNotLoggedIn() {
