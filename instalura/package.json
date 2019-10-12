@@ -5,10 +5,12 @@
   "dependencies": {
     "pubsub-js": "^1.7.0",
     "react": "^16.9.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.9.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "react-transition-group": "^1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FotoItem from "./Foto";
 import Pubsub from 'pubsub-js';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
 
 export default class Timeline extends Component {
 
@@ -10,11 +11,12 @@ export default class Timeline extends Component {
         this.login = this.props.login;
     }
 
-    componentWillMount(){
-        Pubsub.subscribe('timeline',(topico,fotos) => {
+    componentWillMount() {
+        Pubsub.subscribe('timeline', (topico, fotos) => {
+            console.log("componentWillMount");
             console.log(fotos);
-            this.setState({ fotos: fotos });
-        })
+            this.setState({ fotos: fotos.fotos });
+        });
     }
 
     carregaFotos() {
@@ -30,6 +32,8 @@ export default class Timeline extends Component {
         fetch(urlPerfil)
             .then(response => response.json())
             .then(fotos => {
+                console.log("carrega fotos");
+                console.log(fotos);
                 this.setState({ fotos: fotos });
             });
     }
@@ -49,11 +53,14 @@ export default class Timeline extends Component {
 
     render() {
         return (
-            <div className="fotos container">
+            <ReactCSSTransitionGroup
+                transitionName="timeline"
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={300}>
                 {
                     this.state.fotos.map(foto => <FotoItem key={foto.id} foto={foto} />)
                 }
-            </div>
+            </ReactCSSTransitionGroup>
         );
     }
 }
